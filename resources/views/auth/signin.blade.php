@@ -18,15 +18,13 @@
 
 @include('component.errors')
 
-    
+<!--登入頁面顯示-->   
 
-<form action="/user/auth/signup" method="post">
+<form action="/user/auth/signin" method="post" class="container">
 
     <!-- {{ csrf_field() }}表自動隱藏欄位內容-->
     {{ csrf_field() }}
 
-    暱稱： <input type="text" name="nickname" 
-            placeholder="暱稱" value="{{old('nickname')}}"><br>
     Email： <input type="text" name="email" 
             placeholder="Email" value="{{old('email')}}"><br>
     密碼： <input type="password" name="password" 
@@ -40,7 +38,7 @@
         @if (old("type")=="admin" )
         checked
         @endif> 管理員<br>
-    <input type="submit" value="註冊">
+    <input type="submit" value="登入">
     
 </form>
 

@@ -16,8 +16,16 @@
 <!--網頁內容-->
     <body> 
         <header> 
-            <a href="#">註冊</a> 
-            <a href="#">登入</a> 
+
+        @if (session()->has('user_id'))
+        <a href="/user/auth/signout">登出</a>
+        @else
+
+        <a href="#">註冊</a> 
+        <a href="#">登入</a> 
+
+        @endif
+        
         </header> 
         <div class="container"> 
             @yield('content') 
