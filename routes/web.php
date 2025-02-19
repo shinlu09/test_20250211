@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//設置連接中介層,使route進入controller間有個邏輯判斷
+use App\Http\Middleware\AuthUserAdminMiddleware;
 
 //路由參數設置
 
@@ -55,7 +57,9 @@ Route::group(['prefix' => 'merchandise'], function () {
     Route::get(
         'create',
         'App\Http\Controllers\MerchandiseController@MerchandiseCreateProcess'
-    );
+    
+    //設置中介層
+    )->middleware(AuthUserAdminMiddleware::class);
 
     //商品建編輯頁面
 
@@ -66,6 +70,37 @@ Route::group(['prefix' => 'merchandise'], function () {
     Route::post(
         '{mechandise_id}/edit',
         'App\Http\Controllers\MerchandiseController@MerchandiseEditProcess'
+    );
+
+    
+
+    //商品管理編輯
+    Route::get(
+        'manage',
+        'App\Http\Controllers\MerchandiseController@MerchandiseManagePage'
+    );
+    //刪除
+    Route::delete(
+        'manage',
+        'App\Http\Controllers\MerchandiseController@MerchandiseDelete'
+    );
+});
+
+//下列為預約資訊路由設置
+use App\Http\Controllers\BookingController;
+
+Route::group(['prefix' => 'booking'], function (){
+    
+    // 預約頁面
+    Route::get(
+        'booking',
+        'App\Http\Controllers\BookingController@BookingPage'
+    );
+    
+    //新增預約頁面
+    Route::post(
+        'booking',
+        'App\Http\Controllers\BookingController@BookingProcess'
     );
 });
 

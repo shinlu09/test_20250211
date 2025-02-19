@@ -73,7 +73,8 @@
                 class="form-control"
                 id="photo"
                 name="photo">
-            <img src="{{ $merchandise->photo or '/assets/images/default-merchandise.png' }}" />
+            <!--接收更換圖片設置-->
+            <img src="/{{ $merchandise->photo }}" />
         </div>
         <div class="form-group">
             <label for="price">商品價格</label>

@@ -14,7 +14,7 @@ use App\Shop\Entity\Merchandise;
 
 
 
-//建立路由控制器,注意下方檔名(UMerchandiseController)與(MerchandiseController.php)要完全一致
+//建立路由控制器,注意下方檔名(MerchandiseController)與(MerchandiseController.php)要完全一致
 class MerchandiseController  extends Controller 
 {
 
@@ -55,8 +55,6 @@ class MerchandiseController  extends Controller
             return view('merchandise.edit', $binding);
         }
     }
-
-    
     public function MerchandiseEditProcess($merchandise_id)
     {
         $input = request()->all();
@@ -97,7 +95,27 @@ class MerchandiseController  extends Controller
             return redirect('/merchandise/' . $merchandise_id . '/edit');
 
     }
-    
+    //管理商品設置
+    public function MerchandiseManagePage()
+    {
+        $merchandises = Merchandise::get();
+        $binding = [
+            'title' => '管理商品',
+            'merchandises' => $merchandises
+        ];
+        return view('merchandise.manage', $binding);
+    }
+
+    //刪除商品
+    public function MerchandiseDelete()
+    {
+        $merchandises = Merchandise::delete();
+        $binding = [
+            'title' => '刪除商品',
+            'merchandises' => $merchandises
+        ];
+        return view('merchandise.manage', $binding);
+    }
     
 
 

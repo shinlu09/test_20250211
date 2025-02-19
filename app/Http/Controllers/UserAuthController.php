@@ -68,7 +68,8 @@ class UserAuthController extends Controller
                 ->withInput();
 
         }else {
-
+            
+            //Hash表加密密碼
             $input['password']= Hash::make($input['password']);
             User::create($input);
         }
