@@ -56,11 +56,16 @@ Route::group(['prefix' => 'merchandise'], function () {
         'create',
         'App\Http\Controllers\MerchandiseController@MerchandiseCreateProcess'
     );
-    
+
     //商品建編輯頁面
+
     Route::get(
         '{mechandise_id}/edit',
         'App\Http\Controllers\MerchandiseController@MerchandiseEditPage'
+    );
+    Route::post(
+        '{mechandise_id}/edit',
+        'App\Http\Controllers\MerchandiseController@MerchandiseEditProcess'
     );
 });
 
