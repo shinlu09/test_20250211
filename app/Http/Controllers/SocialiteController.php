@@ -35,3 +35,5 @@ class SocialiteController extends Controller
     
 
 }
+
+//可用http://laravelclasstest.com:8088/google/auth 確認是否可使用google驗證
