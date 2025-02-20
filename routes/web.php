@@ -18,6 +18,21 @@ use App\Http\Middleware\AuthUserAdminMiddleware;
 
 //寫成網址寫法:http://127.0.0.1:8088/user/auth/signup
 
+
+//下列為第三方google授權路由設置
+
+Route::get(
+    '/google/auth',
+    'App\Http\Controllers\SocialiteController@redirectToProvider'
+);
+
+
+Route::get(
+    '/google/auth/callback',
+    'App\Http\Controllers\SocialiteController@handleProviderCallback'
+);
+
+
 //下列為註冊登入登出路由設置
 
 Route::group(['prefix' => 'user'], function () {
@@ -103,6 +118,10 @@ Route::group(['prefix' => 'booking'], function (){
         'App\Http\Controllers\BookingController@BookingProcess'
     );
 });
+
+
+
+
 
 
     

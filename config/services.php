@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    //google驗證設置,redirect為在google auth platfrom中設置的已授權的URL
+    
+    'google'=> [
+        'client_id'=> env('GOOGLE_CLIENT_ID'),
+        'client_secret'=> env('GOOGLE_CLIENT_SECRET'),
+        'redirect'=> "http://laravelclasstest.com:8088/google/auth/callback"
+    ],
+
 ];
